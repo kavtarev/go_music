@@ -1,52 +1,61 @@
 const audioPlayer = document.getElementById('audioPlayer');
 const audioSource = document.getElementById('audioSource');
-const playButton = document.getElementById('playButton');
+
 const showButton = document.getElementById('showButton');
+const changeButton = document.getElementById('changeButton');
+
 const sendInput = document.getElementById('sendInput');
 const notesSelect = document.getElementById('notes');
 const modesSelect = document.getElementById('modes');
 
-let playlist = [
-  "./static/C3.mp3",
-  "./static/C4.mp3",
-  "./static/D3.mp3",
-  "./static/D4.mp3",
-  "./static/E34.mp3",
-  "./static/E4.mp3",
-  "./static/F3.mp3",
-  "./static/F4.mp3",
-  "./static/G3.mp3",
-  "./static/A3.mp3",
-  "./static/B3.mp3",
-];
-
+let playlist;
 let interval;
 let index;
 
-playButton.addEventListener('click', function () {
-  let track = pickTrack(playlist)
-  audioSource.src = track
-  audioPlayer.load();
-  audioPlayer.play();
-  interval = setInterval(() => {
-    audioPlayer.play();
-  });
-}, 2000)
 
-showButton.addEventListener('click', () => {
-  clearInterval(interval)
+setPlayList()
+
+showButton.addEventListener('click', function () {
   alert(playlist[index])
 })
 
-sendInput.addEventListener('click', async () => {
-  const res = await fetch(`http://localhost:3000/change-root?root=${notesSelect.value}&mode=${modesSelect.value}`)
-
-  playlist = await res.json()
-
-  return false
+changeButton.addEventListener('click', () => {
+  let track = pickTrack(playlist)
+  audioSource.src = track
+  audioPlayer.load();
 })
 
+sendInput.addEventListener('click', setPlayList)
+
+
 function pickTrack(arr) {
-  index = Math.floor(Math.random() * (arr.length))
+  const newIndex = Math.floor(Math.random() * (arr.length))
+  if (newIndex === index) {
+    return pickTrack(arr)
+  }
+  index = newIndex
   return playlist[index]
 }
+
+async function setPlayList() {
+  const res = await fetch(`http://localhost:3000/change-root?root=${notesSelect.value}&mode=${modesSelect.value}`)
+  playlist = await res.json()
+
+  let track = pickTrack(playlist)
+  audioSource.src = track
+  audioPlayer.load();
+}
+
+
+const playChordBtn = document.getElementById('playChordBtn')
+
+const audioPlayer2 = document.getElementById('audioPlayer2');
+const audioPlayer3 = document.getElementById('audioPlayer3');
+const audioPlayer4 = document.getElementById('audioPlayer4');
+
+playChordBtn.addEventListener('click', () => {
+  audioPlayer2.play()
+  audioPlayer3.play()
+  audioPlayer4.play()
+})
+

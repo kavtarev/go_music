@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проигрыватель M4A файлов</title>
+    <title>й</title>
 </head>
 <body>
-
-    <h1>Проигрыватель M4A файлов</h1>
-
     <audio id="audioPlayer" controls>
-      <source id="audioSource" src="./notes/A3.mp3" type="audio/mp4">
-      Ваш браузер не поддерживает воспроизведение аудиофайлов в формате M4A.
+      <source id="audioSource" type="audio/mp4">
+      Просто ты пес
     </audio>
 
     <br><br>
 
-    <button id="playButton">Начать воспроизведение</button>
-    <button id="showButton">Показать ступень</button>
+    <button id="showButton">Показать ноту</button>
+    <button id="changeButton">Изменить ноту </button>
     <label for="notes">Выберите ноту:</label>
     <select id="notes" name="notes">
         <option value="C">C (До)</option>
@@ -41,6 +38,22 @@
     </select>
     
     <input id='sendInput' type="submit">
+
+    <br></br>
+
+    <audio id="audioPlayer2" controls>
+        <source id="audioSource2" src='./notes/C3.mp3' type="audio/mp4">
+        Просто ты пес
+    </audio>
+    <audio id="audioPlayer3" controls>
+        <source id="audioSource3" src='./notes/E3.mp3' type="audio/mp4">
+        Просто ты пес
+    </audio>
+    <audio id="audioPlayer4" controls>
+        <source id="audioSource3" src='./notes/G3.mp3' type="audio/mp4">
+        Просто ты пес
+    </audio>
+    <button id='playChordBtn'>Играть аккорд</button>
 
     <script src='./init.js'></script>
 </body>
