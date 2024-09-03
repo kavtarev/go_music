@@ -17,8 +17,30 @@
     <br><br>
 
     <button id="playButton">Начать воспроизведение</button>
-    <!-- <button id="stopButton">Остановить</button> -->
     <button id="showButton">Показать ступень</button>
+    <label for="notes">Выберите ноту:</label>
+    <select id="notes" name="notes">
+        <option value="C">C (До)</option>
+        <option value="CS">C# (До-диез)</option>
+        <option value="D">D (Ре)</option>
+        <option value="DS">D# (Ре-диез)</option>
+        <option value="E">E (Ми)</option>
+        <option value="F">F (Фа)</option>
+        <option value="FS">F# (Фа-диез)</option>
+        <option value="G">G (Соль)</option>
+        <option value="GS">G# (Соль-диез)</option>
+        <option value="A">A (Ля)</option>
+        <option value="AS">A# (Ля-диез)</option>
+        <option value="B">B (Си)</option>
+    </select>
+
+    <label for="modes">Выберите лад:</label>
+    <select id="modes" name="notes">
+        <option value="major">Мажор</option>
+        <option value="minor">Минор</option>
+    </select>
+    
+    <input id='sendInput' type="submit">
 
     <script src='./init.js'></script>
 </body>
