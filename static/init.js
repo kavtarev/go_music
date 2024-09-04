@@ -9,9 +9,7 @@ const notesSelect = document.getElementById('notes');
 const modesSelect = document.getElementById('modes');
 
 let playlist;
-let interval;
 let index;
-
 
 setPlayList()
 
